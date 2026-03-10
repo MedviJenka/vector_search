@@ -4,8 +4,6 @@ from typing import List
 from dataclasses import dataclass
 from functools import cached_property
 from faker import Faker
-
-from pydantic import BaseModel, Field
 from qdrant_client import QdrantClient
 from qdrant_client.http.models import (
     Batch,
@@ -18,14 +16,7 @@ from qdrant_client.http.models import (
     Record
 )
 
-
-# ---------------- #
-#   Configuration  #
-# ---------------- #
-
-class VectorConfig(BaseModel):
-    collection_name: str = Field(..., description="Collection name")
-    size: int = Field(default=100, description="Vector size")
+from settings import Config
 
 
 # ---------------- #
@@ -34,7 +25,8 @@ class VectorConfig(BaseModel):
 
 @dataclass
 class VectorModel:
-    config: VectorConfig
+
+    config: Config
 
     @cached_property
     def client(self) -> QdrantClient:

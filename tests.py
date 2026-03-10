@@ -3,7 +3,7 @@ import random
 from typing import List
 from dataclasses import dataclass
 from faker import Faker
-from main import VectorModel, VectorConfig
+from main import VectorModel, Config
 from qdrant_client.http.models import Filter, Record
 
 
@@ -53,7 +53,7 @@ def generate_fake_dataset(count: int, vector_size: int) -> FakeVectorDataset:
 
 @pytest.fixture(scope="module")
 def vector_model():
-    config = VectorConfig(collection_name="test_collection1", size=128)
+    config = Config(collection_name="test_collection1", size=128)
     model = VectorModel(config)
 
     try:
