@@ -1,0 +1,30 @@
+name: dev
+
+services:
+
+  vector_service:
+    container_name: vector_service
+    image: qdrant/qdrant:latest
+    restart: always
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    configs:
+      - source: qdrant_config
+        target: ./ops/vectors
+    volumes:
+      - ./qdrant_data:/qdrant/storage
+    networks:
+      - network
+
+configs:
+  qdrant_config:
+    content: |
+      log_level: INFO
+
+
+# ---------------------- #
+#       Networks         #
+# ---------------------- #
+networks:
+  network:
