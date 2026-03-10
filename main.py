@@ -45,6 +45,5 @@ class VectorModel:
         return response.model_dump()
 
 
-v = VectorModel(config=Config(collection_name='Main'))
-
-print(v.build_filter(key="name", value="Patricia Barry"))
+# v = VectorModel(config=Config(collection_name='Main'))
+# print(v.build_filter(key="name", value="Patricia Barry"))
