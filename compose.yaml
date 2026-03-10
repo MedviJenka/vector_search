@@ -11,9 +11,10 @@ services:
       - "6334:6334"
     configs:
       - source: qdrant_config
-        target: ./ops/vectors
+        target: config.yaml
     volumes:
       - ./qdrant_data:/qdrant/storage
+
     networks:
       - network
 

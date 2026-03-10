@@ -42,3 +42,7 @@ class VectorModel:
     @staticmethod
     def build_filter(key: str, value: str) -> Filter:
         return Filter(must=[FieldCondition(key=key, match=MatchValue(value=value))])
+
+
+v = VectorModel(config=Config(collection_name='Main2'))
+v.create_collection()
