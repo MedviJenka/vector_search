@@ -41,8 +41,10 @@ class VectorModel:
 
     @staticmethod
     def build_filter(key: str, value: str) -> Filter:
-        return Filter(must=[FieldCondition(key=key, match=MatchValue(value=value))])
+        response = Filter(must=[FieldCondition(key=key, match=MatchValue(value=value))])
+        return response.model_dump()
 
 
-v = VectorModel(config=Config(collection_name='Main2'))
-v.create_collection()
+v = VectorModel(config=Config(collection_name='Main'))
+
+print(v.build_filter(key="name", value="Patricia Barry"))

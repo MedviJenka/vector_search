@@ -54,7 +54,7 @@ def generate_fake_dataset(count: int, vector_size: int) -> FakeVectorDataset:
 
 @pytest.fixture(scope="module")
 def vector_model():
-    config = Config(collection_name="test_collection1", size=128)
+    config = Config()
     model = VectorModel(config)
 
     try:
